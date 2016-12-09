@@ -6,19 +6,19 @@
 /*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:12:41 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/08 17:57:59 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/09 14:41:03 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	calc_color(int i, int iter_max, t_win *infos)
+void	calc_color(int i, int iter_max, char *pt_img)
 {
 	int		color;
 	double	proportion;
 
 	if (i == iter_max)
-		put_pixel_on_image(infos, 0x0);
+		put_pixel_on_image(pt_img, 0x0);
 	else
 	{
 		proportion = (double)i / (double)iter_max;
@@ -34,6 +34,6 @@ void	calc_color(int i, int iter_max, t_win *infos)
 			color -= 0x010100 * (int)(nearbyint(proportion * 341.33));
 			color += 0x000001 * (int)(nearbyint(proportion * 341.33));
 		}
-		put_pixel_on_image(infos, color);
+		put_pixel_on_image(pt_img, color);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 15:55:54 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/08 17:05:01 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/09 15:14:25 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ int		funct_escape(int keycode, void *param)
 	return (0);
 }
 
-void	put_pixel_on_image(t_win *infos, int color)
+void	put_pixel_on_image(char *pt_img, int color)
 {
 	int				i;
 	unsigned char	*color_pt;
 	char			*pt_img_pixel;
 
-	color = mlx_get_color_value(infos->mlx, color);
 	color_pt = (unsigned char *)&color;
-	pt_img_pixel = infos->pt_img;
+	pt_img_pixel = pt_img;
 	i = 0;
 	while (i < 3)
 	{
@@ -47,6 +46,7 @@ int		main(int argc, char **argv)
 	int		ret;
 
 	infos.mlx = mlx_init();
+	pthread_mutex_init(&(infos.mutex_y), NULL);
 	ret = 0;
 	if (argc >= 2)
 	{

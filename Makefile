@@ -11,7 +11,7 @@ all : $(NAME)
 $(NAME) :
 	cd ./libft && make
 	gcc -o fractol $(SRC) $(LIBFT) -L/usr/local/lib -I/usr/local/include \
--lmlx -framework OpenGL -framework appkit
+-lmlx -framework OpenGL -framework appkit -Wall -Wextra -Werror
 
 clean :
 	cd ./libft && make clean
