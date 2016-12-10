@@ -3,41 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 15:55:54 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/09 15:14:25 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/10 19:24:18 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		funct_escape(int keycode, void *param)
+int		funct_key(int keycode, void *param)
 {
 	if (keycode == 53)
 	{
+		mlx_destroy_image(((t_win *)param)->mlx, ((t_win *)param)->img);
 		mlx_destroy_window(((t_win *)param)->mlx, ((t_win *)param)->win);
 		exit(1);
 	}
 	return (0);
 }
 
-void	put_pixel_on_image(char *pt_img, int color)
+int		funct_mouse(int button, int x, int y, void *param)
 {
-	int				i;
-	unsigned char	*color_pt;
-	char			*pt_img_pixel;
-
-	color_pt = (unsigned char *)&color;
-	pt_img_pixel = pt_img;
-	i = 0;
-	while (i < 3)
-	{
-		*pt_img_pixel = *color_pt;
-		pt_img_pixel++;
-		color_pt++;
-		i++;
-	}
+	if (button == 5)
+		zoom(x, y, (t_win *)param);
+	if (button == 4)
+		dezoom(x, y, (t_win *)param);
+	return (0);
 }
 
 int		main(int argc, char **argv)
@@ -51,12 +43,13 @@ int		main(int argc, char **argv)
 	if (argc >= 2)
 	{
 		if (ft_strcmp(argv[1], "mandelbrot") == 0)
-			ret = mandelbrot(&infos);
+			ret = init_mandelbrot(&infos);
 		if (ret == 1)
 		{
 			infos.win = mlx_new_window(infos.mlx, 1500, 1000, argv[1]);
 			mlx_put_image_to_window(infos.mlx, infos.win, infos.img, 0, 0);
-			mlx_key_hook(infos.win, funct_escape, &infos);
+			mlx_key_hook(infos.win, funct_key, &infos);
+			mlx_mouse_hook(infos.win, funct_mouse, &infos);
 			mlx_loop(infos.mlx);
 		}
 	}

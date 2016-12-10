@@ -2,7 +2,8 @@ NAME = fractol
 
 SRC = fractol.c \
 	  mandelbrot.c \
-	  colors.c
+	  colors.c \
+	  mouse.c
 
 LIBFT = libft/libft.a
 

@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:12:41 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/09 14:41:03 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/10 12:22:53 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	put_pixel_on_image(char *pt_img, int color)
+{
+	int				i;
+	unsigned char	*color_pt;
+	char			*pt_img_pixel;
+
+	color_pt = (unsigned char *)&color;
+	pt_img_pixel = pt_img;
+	i = 0;
+	while (i < 3)
+	{
+		*pt_img_pixel = *color_pt;
+		pt_img_pixel++;
+		color_pt++;
+		i++;
+	}
+}
 
 void	calc_color(int i, int iter_max, char *pt_img)
 {
