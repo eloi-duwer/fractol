@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 18:47:38 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/11 21:42:41 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/12 15:55:31 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,16 @@ void	init_julia2(t_win *infos)
 
 void	init_julia(t_win *infos)
 {
-	write (1, "controls : arrows to move,\n", 27);
-	write (1, "+ to increase the number of iterations\n", 39);
-	write (1, "- to decrease the number of iterations\n", 39);
-	write (1, "F to fix/unfix the Julia parameter,\n", 36);
-	write (1, "scroll the mouse to zoom/dezoom,\n", 33);
-	write (1, "move the mouse to change the Julia parameter,\n", 46);
-	write (1, "esc to quit.\n", 13);
-	write (1, "Press enter to continue\n", 24);
-	while (getchar() != '\n');
+	write(1, "controls : arrows to move,\n", 27);
+	write(1, "+ to increase the number of iterations\n", 39);
+	write(1, "- to decrease the number of iterations\n", 39);
+	write(1, "F to fix/unfix the Julia parameter,\n", 36);
+	write(1, "scroll the mouse to zoom/dezoom,\n", 33);
+	write(1, "move the mouse to change the Julia parameter,\n", 46);
+	write(1, "esc to quit.\n", 13);
+	write(1, "Press enter to continue\n", 24);
+	while (getchar() != '\n')
+	{
+	}
 	init_julia2(infos);
 }

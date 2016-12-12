@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 18:47:38 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/11 21:50:38 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/12 17:30:51 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double	calc_mandelbrot(t_complex *nb, char *pt_img, t_win *infos)
 			+ nb->imag_part;
 		i++;
 	}
-	calc_color(i, iter_max, pt_img);
+	calc_color(i - 1, iter_max - 1, pt_img);
 	return (infos->x_to_add);
 }
 
@@ -96,19 +96,21 @@ void	init_mandelbrot2(t_win *infos)
 	infos->fix = 1;
 	infos->base_nb_real = 0;
 	infos->base_nb_imag = 0;
-	mandelbrot (infos);
+	mandelbrot(infos);
 }
 
 void	init_mandelbrot(t_win *infos)
 {
-	write (1, "controls : arrows to move,\n", 27);
-	write (1, "+ to increase the number of iterations\n", 39);
-	write (1, "- to decrease the number of iterations\n", 39);
-	write (1, "F to fix/unfix the Mandelbrot parameter,\n", 36);
-	write (1, "scroll the mouse to zoom/dezoom,\n", 33);
-	write (1, "move the mouse to change the Mandelbrot parameter,\n", 46);
-	write (1, "esc to quit.\n", 13);
-	write (1, "Press enter to continue\n", 24);
-	while (getchar() != '\n');
+	write(1, "controls : arrows to move,\n", 27);
+	write(1, "+ to increase the number of iterations,\n", 40);
+	write(1, "- to decrease the number of iterations,\n", 40);
+	write(1, "F to fix/unfix the Mandelbrot parameter,\n", 41);
+	write(1, "scroll the mouse to zoom/dezoom,\n", 33);
+	write(1, "move the mouse to change the Mandelbrot parameter,\n", 51);
+	write(1, "esc to quit.\n", 13);
+	write(1, "Press enter to continue\n", 24);
+	while (getchar() != '\n')
+	{
+	}
 	init_mandelbrot2(infos);
 }

@@ -6,7 +6,7 @@
 #    By: eduwer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 18:54:25 by eduwer            #+#    #+#              #
-#    Updated: 2016/11/26 16:11:16 by eduwer           ###   ########.fr        #
+#    Updated: 2016/12/12 15:39:30 by eduwer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,10 @@ SRC_NAME = ft_atoi.c \
 		   ft_lstiter.c \
 		   ft_lstmap.c \
 		   ft_lstnew.c \
-		   get_next_line.c
+		   get_next_line.c \
+		   ft_power.c \
+		   ft_abs.c \
+		   mlx_img_pixel_put.c
 
 OBJ_NAME = ft_atoi.o \
 		   ft_bzero.o \
@@ -128,7 +131,11 @@ OBJ_NAME = ft_atoi.o \
 		   ft_lstiter.o \
 		   ft_lstmap.o \
 		   ft_lstnew.o \
-		   get_next_line.o
+		   get_next_line.o \
+		   ft_power.o \
+		   ft_abs.o \
+		   mlx_img_pixel_put.o
+
 
 NAME = libft.a
 

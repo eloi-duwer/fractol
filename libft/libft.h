@@ -6,7 +6,7 @@
 /*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 13:47:08 by eduwer            #+#    #+#             */
-/*   Updated: 2016/11/26 16:09:00 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/12 15:38:13 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,9 @@ void				ft_lstadd(t_list **alst, t_list *niuw);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					get_next_line(const int fd, char **line);
+double				ft_power (double nb, unsigned int power);
+unsigned int		ft_abs(int nb);
+void				mlx_img_pixel_put(char *pt_img, int size_line, \
+						int coord[2], int color);
 
 #endif

@@ -6,44 +6,37 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/11 15:58:47 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/11 21:48:13 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/12 15:55:27 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_man_and_draw(t_win *infos)
-{
-	infos->x_min = -2;
-	infos->x_max = 1;
-	infos->y_max = 1;
-	infos->y_min = -1;
-	infos->iter_max = 50;
-	exec_and_draw(infos);
-}
-
 int		funct_key(int keycode, void *param)
 {
+	t_win *infos;
+
+	infos = (t_win *)param;
 	if (keycode == 53)
 	{
-		mlx_destroy_image(((t_win *)param)->mlx, ((t_win *)param)->img);
-		mlx_destroy_window(((t_win *)param)->mlx, ((t_win *)param)->win);
+		mlx_destroy_image(infos->mlx, infos->img);
+		mlx_destroy_window(infos->mlx, infos->win);
 		exit(1);
 	}
 	if (keycode == 3)
 	{
-		((t_win *)param)->fix = \
-			(((t_win *)param)->fix == 0) ? 1 : 0;
-		write (1, "fix parameter changed\n", 22);
+		infos->fix = (infos->fix == 0) ? 1 : 0;
+		write(1, "fix parameter changed\n", 22);
 	}
 	if (keycode == 15)
 	{
-		if (((t_win *)param)->prog == 0)
-			init_mandelbrot2((t_win *)param);
-		else if (((t_win *)param)->prog == 1)
-			init_julia2((t_win *)param);
+		if (infos->prog == 0)
+			init_mandelbrot2(infos);
+		else if (infos->prog == 1)
+			init_julia2(infos);
+		mlx_put_image_to_window(infos->mlx, infos->win, infos->img, 0, 0);
 	}
-		return (0);
+	return (0);
 }
 
 int		funct_mouse(int button, int x, int y, void *param)
