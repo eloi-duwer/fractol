@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 15:55:54 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/13 16:42:48 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/13 18:44:57 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	exec_and_draw(t_win *infos)
 		mandelbrot(infos);
 	else if (infos->prog == 1)
 		julia(infos);
-	mlx_put_image_to_window(infos->mlx, infos->win, infos->img, 0, 0);
+	if (infos->prog != 2)
+		mlx_put_image_to_window(infos->mlx, infos->win, infos->img, 0, 0);
 }
 
 int		get_prog_name(char *name, int nb)
@@ -36,7 +37,7 @@ int		get_prog_name(char *name, int nb)
 
 void	print_usage_and_quit(void)
 {
-	write(1, "usage: ./fractol mandelbrot/julia/other\n", 40);
+	write(1, "usage: ./fractol mandelbrot/julia/buddhabrot\n", 45);
 	exit(1);
 }
 
@@ -54,11 +55,11 @@ int		main(int argc, char **argv)
 		init_julia(&infos);
 	else if (infos.prog == 2)
 		init_buddhabrot(&infos);
-	if (infos.prog == 2)
-		infos.win = mlx_new_window(infos.mlx, 1000, 1350, argv[1]);
-	else
+	if (infos.prog != 2)
+	{
 		infos.win = mlx_new_window(infos.mlx, 1500, 1000, argv[1]);
-	mlx_put_image_to_window(infos.mlx, infos.win, infos.img, 0, 0);
+		mlx_put_image_to_window(infos.mlx, infos.win, infos.img, 0, 0);
+	}
 	hooks(&infos);
 	return (0);
 }

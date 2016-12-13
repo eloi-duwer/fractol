@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/11 15:58:47 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/13 13:06:46 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/13 18:40:47 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int		funct_key(int keycode, void *param)
 			init_mandelbrot2(infos);
 		else if (infos->prog == 1)
 			init_julia2(infos);
-		mlx_put_image_to_window(infos->mlx, infos->win, infos->img, 0, 0);
+		if (infos->prog != 2)
+			mlx_put_image_to_window(infos->mlx, infos->win, infos->img, 0, 0);
 	}
 	return (0);
 }
