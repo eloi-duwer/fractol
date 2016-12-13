@@ -6,7 +6,7 @@
 /*   By: eduwer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 12:37:04 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/12 15:24:06 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:40:21 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		motion_mouse(int x, int y, void *param)
 			((t_win *)param)->y_to_add * y);
 		printf("parameter %f %+fi\n", \
 			((t_win *)param)->base_nb_real, ((t_win *)param)->base_nb_imag);
-		exec_and_draw((t_win *)param);
+	exec_and_draw((t_win *)param);
 	}
 	return (1);
 }

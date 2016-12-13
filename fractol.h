@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 15:57:31 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/12 15:50:46 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/13 15:19:32 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	init_julia(t_win *infos);
 void	init_julia2(t_win *infos);
 void	julia(t_win *infos);
 void	hooks(t_win *infos);
+void	init_buddhabrot(t_win *infos);
 
 # endif

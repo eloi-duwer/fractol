@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 18:47:38 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/12 15:55:31 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/13 15:16:19 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,9 @@ void	init_julia(t_win *infos)
 	while (getchar() != '\n')
 	{
 	}
+	pthread_mutex_init(&(infos->mutex_y), NULL);
+	infos->img = mlx_new_image(infos->mlx, 1500, 1000);
+	infos->pt_img = mlx_get_data_addr(infos->img, &(infos->bits_per_pixel), \
+			&(infos->size_line), &(infos->endian));
 	init_julia2(infos);
 }

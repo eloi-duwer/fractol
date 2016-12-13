@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 17:12:41 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/12 17:00:39 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:18:13 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		white_to_yellow(double proportion)
 	}
 	return (color);
 }
+
 int		yellow_to_blue_sky(double proportion)
 {
 	int color;
@@ -63,6 +64,7 @@ int		yellow_to_blue_sky(double proportion)
 	}
 	return (color);
 }
+
 int		blue_sky_to_purple(double proportion)
 {
 	int color;
