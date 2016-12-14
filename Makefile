@@ -7,7 +7,8 @@ SRC = fractol.c \
 	  hooks.c \
 	  make_new_lines.c \
 	  julia.c \
-	  buddhabrot.c
+	  buddhabrot.c \
+	  mandel_julia_power.c
 
 LIBFT = libft/libft.a
 

@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 15:57:31 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/13 15:19:32 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/14 16:53:12 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct	s_win
 	double			base_nb_real;
 	double			base_nb_imag;
 	int				fix;
+	int				power;
+	int				pixels_x;
+	int				pixels_y;
 }				t_win;
 
 typedef struct	s_complex
@@ -75,5 +78,7 @@ void	init_julia2(t_win *infos);
 void	julia(t_win *infos);
 void	hooks(t_win *infos);
 void	init_buddhabrot(t_win *infos);
+void	mandel_julia_power(t_complex *nb, t_complex *result, t_win *infos);
+void	init_mandel_julia_power(t_win *infos);
 
 # endif

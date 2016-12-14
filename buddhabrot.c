@@ -6,7 +6,7 @@
 /*   By: eduwer <eduwer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 18:47:38 by eduwer            #+#    #+#             */
-/*   Updated: 2016/12/13 18:59:36 by eduwer           ###   ########.fr       */
+/*   Updated: 2016/12/14 14:30:03 by eduwer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,13 @@ void	calc_mandelbrot_buddha(t_complex *nb, int color_tab[1000][1500], \
 		make_buddha(nb, infos, color_tab);
 }
 
-void	mandelbrot_buddha(t_win *infos, int color_tab[1000][1500])
+void	mandelbrot_buddha(t_win *infos, int color_tab[1000][1500], \
+							char *mem_img)
 {
 	t_complex	nb;
 	int			i;
 	int			j;
-	char		*mem_img;
 
-	mem_img = infos->pt_img;
 	nb.imag_part = 1;
 	while (nb.imag_part > -1)
 	{
@@ -91,14 +90,12 @@ void	mandelbrot_buddha(t_win *infos, int color_tab[1000][1500])
 		nb.imag_part -= infos->y_to_add;
 	}
 	i = 0;
-	while (i < 1500)
+	while (i < 1500 && ((j = 0) == 0))
 	{
-		j = 0;
 		while (j < 1000)
 		{
-			put_pixel_on_image(mem_img, color_tab[j][i]);
+			put_pixel_on_image(mem_img, color_tab[j++][i]);
 			mem_img += 4;
-			j++;
 		}
 		i++;
 	}
@@ -106,9 +103,10 @@ void	mandelbrot_buddha(t_win *infos, int color_tab[1000][1500])
 
 void	init_buddhabrot(t_win *info)
 {
-	int tab_color[1000][1500];
-	int i;
-	int j;
+	int		tab_color[1000][1500];
+	int		i;
+	int		j;
+	char	*mem_img;
 
 	i = 0;
 	while (i < 1000)
@@ -124,7 +122,8 @@ void	init_buddhabrot(t_win *info)
 			&(info->size_line), &(info->endian));
 	info->x_to_add = (double)3 / (double)1500;
 	info->y_to_add = (double)2 / (double)1000;
-	mandelbrot_buddha(info, tab_color);
+	mem_img = info->pt_img;
+	mandelbrot_buddha(info, tab_color, mem_img);
 	info->win = mlx_new_window(info->mlx, 1000, 1300, "buddhabrot");
 	mlx_put_image_to_window(info->mlx, info->win, info->img, 0, -200);
 }
