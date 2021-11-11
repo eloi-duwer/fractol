@@ -13,7 +13,7 @@ NAME = fractol
 
 CC = clang
 
-CFLAGS = -I./include -I./libft/include -I../minilibx-linux -Wall -Wextra -O3
+CFLAGS = -I./include -I./libft/include -I./minilibx-linux -Wall -Wextra -O3
 
 SRCF = ./srcs/
 
@@ -26,7 +26,7 @@ LFT = libft/libft.a
 all : $(NAME)
 
 $(NAME) : $(LFT) $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) -L./libft -lft -lXext -lX11 -lbsd -L../minilibx-linux -lmlx -lpthread -lm -O3
+	$(CC) -o $(NAME) $(OBJS) -L./libft -lft -lXext -lX11 -lbsd -L./minilibx-linux -lmlx -lpthread -lm -O3
 
 $(LFT):
 	make -C ./libft
