@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 void		mandel_julia_power2(t_complex *nb, t_complex *result, \
 			t_win *infos, double mem_real_part)

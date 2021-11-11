@@ -1,6 +1,5 @@
-NAME = fractol
 
-SRC = fractol.c \
+SRC_NAME = fractol.c \
 	  mandelbrot.c \
 	  colors.c \
 	  mouse.c \
@@ -10,20 +9,37 @@ SRC = fractol.c \
 	  buddhabrot.c \
 	  mandel_julia_power.c
 
-LIBFT = libft/libft.a
+NAME = fractol
+
+CC = clang
+
+CFLAGS = -I./include -I./libft/include -I../minilibx-linux -Wall -Wextra -O3
+
+SRCF = ./srcs/
+
+OBJF = ./obj/
+
+OBJS = $(addprefix $(OBJF), $(SRC_NAME:.c=.o))
+
+LFT = libft/libft.a
 
 all : $(NAME)
 
-$(NAME) :
-	cd ./libft && make
-	gcc -o fractol $(SRC) $(LIBFT) -L/usr/local/lib -I/usr/local/include \
--lmlx -framework OpenGL -framework appkit -Wall -Wextra -Werror
+$(NAME) : $(LFT) $(OBJS)
+	$(CC) -o $(NAME) $(OBJS) -L./libft -lft -lXext -lX11 -lbsd -L../minilibx-linux -lmlx -lpthread -lm -O3
+
+$(LFT):
+	make -C ./libft
+
+$(OBJF)%.o: $(SRCF)%.c
+	@mkdir -p $(@D)
+	$(CC) -o $@ $(CFLAGS) -c $(addprefix $(SRCF), $*.c)
 
 clean :
-	cd ./libft && make clean
+	rm -rf $(OBJS)
 
 fclean : clean
-	rm -rf fractol
+	rm -rf $(NAME)
 
 re : fclean all
 

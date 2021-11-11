@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 void	find_coords(t_complex result, t_win *infos, int tab[1000][1500])
 {
